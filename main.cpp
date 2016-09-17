@@ -4,6 +4,7 @@
 #include <cstdlib> // used to exit
 using namespace std;
 
+//account details and
 class Account
 {
 private:
@@ -49,7 +50,7 @@ private:
     double depositValue;
     double balance;
 
-    Account* login()
+    Account login()
     {
         cout << "---Login---\n\n";
         cout << "Enter ID: ";
@@ -62,37 +63,8 @@ private:
         //If password is correct, create an Account object
         double balance = 1500;
         Account account(userID, balance);
-        return &account;
+        return account;
     }
-
-    /*void transact(Account* account)
-    {
-        cout<< "\nEnter your requirement: "
-            << "\nBalance-'1'\t Deposit-'2'\t Withdraw-'3'\n";
-        cin>> option;
-        switch(option)
-        {
-            case 1:
-                balance = account->getBalance();
-                cout<< "\nYour balance is  "<<balance<< endl;
-                break;
-
-            case 2:
-                cout<< "\nEnter the amount of deposit: ";
-                cin>> depositValue;
-                account->deposit(depositValue);
-                break;
-
-            case 3:
-                cout<< "\nEnter the amount of withdraw: ";
-                cin>> withdrawValue;
-                account->withdraw(withdrawValue);
-                break;
-
-            default:
-                cout<< "\n--INVALID INPUT !!!--\n";
-        }
-    }*/
 
     void createAcc()
     {
@@ -115,49 +87,48 @@ public:
     {
         cout << "1 - Login \n2 - Create New Account \n3 - Quit\n";
         cin >> option1;
-        //Account* accountPointer;//=login();
         int option;
         switch (option1)
         {
         case 1:
         {
-            Account* accountPointer= login();
-            cout << accountPointer->getBalance();
-            if(accountPointer != NULL)
+            Account account= login();
+            cout<< "\nEnter your requirement: "
+                << "\nBalance-'1'\t Deposit-'2'\t Withdraw-'3'\n";
+            cin>> option;
+            switch(option)
             {
-                cout<< "\nEnter your requirement: "
-                    << "\nBalance-'1'\t Deposit-'2'\t Withdraw-'3'\n";
-                cin>> option;
-                switch(option)
-                {
-                case 1:
-                {
-                    balance = accountPointer->getBalance();
-                    cout<< "\nYour balance is  "<<balance<< endl;
-                }
+            case 1:
+            {
+                balance = account.getBalance();
+                cout<< "\nYour balance is  "<<balance<< endl;
+            }
+            break;
+
+            case 2:
+                cout<< "\nEnter the amount of deposit: ";
+                cin>> depositValue;
+                account.deposit(depositValue);
+                cout << "\nYour balance is  "<<account.getBalance()<< endl;
                 break;
 
-                case 2:
-                    cout<< "\nEnter the amount of deposit: ";
-                    cin>> depositValue;
-                    accountPointer->deposit(depositValue);
-                    break;
+            case 3:
+                cout<< "\nEnter the amount of withdraw: ";
+                cin>> withdrawValue;
+                account.withdraw(withdrawValue);
+                cout << "\nYour balance is  "<<account.getBalance()<< endl;
+                break;
 
-                case 3:
-                    cout<< "\nEnter the amount of withdraw: ";
-                    cin>> withdrawValue;
-                    accountPointer->withdraw(withdrawValue);
-                    break;
-
-                default:
-                    cout<< "\n--INVALID INPUT !!!--\n";
-                }
+            default:
+                cout<< "\n--INVALID INPUT !!!--\n";
             }
         }
+        selectMenu();
         break;
 
         case 2:
             createAcc();
+            selectMenu();
             break;
 
         case 3:
@@ -166,6 +137,7 @@ public:
 
         default:
             cout << "--INVALID INPUT!-- \n ---PLEASE CHECK AGAIN!---";
+            selectMenu();
             break;
         }
     }
