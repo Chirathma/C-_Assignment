@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1474227976 source:d:\development\c++\finale\main.cpp
+	<iostream>
+	<fstream>
+	<string.h>
+	<cstdlib>
+	<limits>
+	<vector>
+	<sstream>
+
