@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1473845919 source:d:\hazard! programming\c++ programming\file handling test\main.cpp
+	<iostream>
+	<fstream>
+	<cstdlib>
+
